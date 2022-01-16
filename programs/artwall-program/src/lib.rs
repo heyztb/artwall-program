@@ -49,6 +49,7 @@ pub struct Initialize {
     pub system_program: Program<'info, System>,
 }
 
+#[account]
 pub struct ArtWallAccount {
     pub count: u64,
     pub art_collection: Vec<ArtStruct>
@@ -61,6 +62,7 @@ pub struct ArtStruct {
     pub submitted_by: Pubkey
 }
 
+#[derive(Accounts)]
 pub struct SubmitArt<'info> {
     #[account(mut)]
     pub artwall_account: Account<'info, ArtWallAccount>,
@@ -68,6 +70,7 @@ pub struct SubmitArt<'info> {
     pub user: Singer<'info>
 }
 
+#[derive(Accounts)]
 pub struct AppreciateArt<'info> {
     #[account(mut)]
     pub artwall_account: Account<'info, ArtWallAccount>
