@@ -11,12 +11,12 @@ pub mod artwall_program {
         Ok(())
     }
 
-    pub fn submit_art(ctx: Context<SubmitArt>, data: String) -> ProgramResult {
-        let artwall_account = &mut.ctx.accounts.artwall_account;
+    pub fn submit_art(ctx: Context<SubmitArt>, cid: String) -> ProgramResult {
+        let artwall_account = &mut ctx.accounts.artwall_account;
         let user = &mut ctx.accounts.user;
 
         let art = ArtStruct {
-            data: data.to_string(),
+            cid: cid.to_string(),
             appreciation_count: 0,
             submitted_by: *user.to_account_info().key,
         };
@@ -41,7 +41,7 @@ pub mod artwall_program {
 
 
 #[derive(Accounts)]
-pub struct Initialize {
+pub struct Initialize<'info> {
     #[account(init, payer = user, space = 9000)]
     pub artwall_account: Account<'info, ArtWallAccount>,
     #[account(mut)]
@@ -57,7 +57,7 @@ pub struct ArtWallAccount {
 
 #[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
 pub struct ArtStruct {
-    pub data: String,
+    pub cid: String,
     pub appreciation_count: u64,
     pub submitted_by: Pubkey
 }
@@ -67,7 +67,7 @@ pub struct SubmitArt<'info> {
     #[account(mut)]
     pub artwall_account: Account<'info, ArtWallAccount>,
     #[account(mut)]
-    pub user: Singer<'info>
+    pub user: Signer<'info>
 }
 
 #[derive(Accounts)]
