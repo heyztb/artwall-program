@@ -1,11 +1,11 @@
-[programs.localnet]
-artwall_program = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+[programs.devnet]
+artwall_program = "A4SNUNtVRZwhYuQ1Ar5RYhowjdRSobqWWmiSGTNxNboS"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/Users/zach/.config/solana/id.json"
 
 [scripts]
