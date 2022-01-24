@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("A4SNUNtVRZwhYuQ1Ar5RYhowjdRSobqWWmiSGTNxNboS");
 
 #[program]
 pub mod artwall_program {
